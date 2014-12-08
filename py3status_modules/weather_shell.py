@@ -15,7 +15,7 @@ class Py3status(object):
       ["bash", "/home/nat/.weather/current.bash"])
     response = {
       'cached_until': 3600,
-      'full_text': full_text,
+      'full_text': full_text.strip(),
       'name': 'weather'
     }
     return (self.index, response)
