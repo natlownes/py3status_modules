@@ -8,9 +8,8 @@ class Py3status(object):
   for now just use shell script that gets weather
   information
   '''
-  index = 0
+  index = 1
   disabled = False
-
 
   def weather(self, json, i3status_config):
     full_text = subprocess.check_output(
