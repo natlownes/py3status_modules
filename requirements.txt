@@ -1,4 +1,2 @@
 requests==2.2.1
-py3status=1.6
-
-
+py3status==1.6
