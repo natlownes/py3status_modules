@@ -1,5 +1,7 @@
 import subprocess
 
+from time import time
+
 
 class Py3status(object):
   '''
@@ -14,8 +16,8 @@ class Py3status(object):
     full_text = subprocess.check_output(
       ["bash", "/home/nat/.weather/current.bash"])
     response = {
-      'cached_until': 3600,
-      'full_text': full_text.strip(),
-      'name': 'weather'
+      'cached_until':  time() + 3600,
+      'full_text':     full_text.strip(),
+      'name':          'weather'
     }
     return (self.index, response)
