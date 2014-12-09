@@ -15,7 +15,12 @@ class TestLastfm(TestCase):
     now_playing = lastfm._now_playing_formatted()
     print now_playing
 
-  def test_is_probably_not_still_playing(self):
+  #def test_is_probably_not_still_playing(self):
+    #lastfm = Py3status()
+    #not_still_playing = lastfm._is_probably_not_still_playing()
+    #print not_still_playing
+
+  def test_is_currently_playing(self):
     lastfm = Py3status()
-    not_still_playing = lastfm._is_probably_not_still_playing()
-    print not_still_playing
+    is_playing = lastfm._is_currently_playing()
+    print is_playing
