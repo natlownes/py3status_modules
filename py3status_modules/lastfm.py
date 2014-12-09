@@ -16,7 +16,7 @@ class Py3status(object):
   def now_playing(self, json, i3status_config):
     full_text = ''
     if not self.disabled:
-      full_test = self._now_playing_formatted()
+      full_text = self._now_playing_formatted()
     response = {
       'cached_until':  self._cached_until(),
       'full_text':     full_text,
