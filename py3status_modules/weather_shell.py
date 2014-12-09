@@ -12,11 +12,12 @@ class Py3status(object):
   disabled = False
 
   def weather(self, json, i3status_config):
-    if self.disabled:
-      return
+    full_text = ''
+    if not self.disabled:
+      full_text = self._get_weather()
     response = {
       'cached_until':  time() + 3600,
-      'full_text':     self._get_weather(),
+      'full_text':     full_text,
       'name':          'weather'
     }
     return (self.index, response)
