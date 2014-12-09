@@ -38,16 +38,30 @@ class Py3status(object):
   def _cached_until(self):
     return time() + 120
 
+  def _is_probably_not_still_playing(self):
+    '''
+    if the "currently playing" song was started more than 20 minutes ago,
+    assume that we've stopped listening/are listening to Iron Butterfly
+    '''
+    played_at = self._get_now_playing()['played_at']
+    timeout   = 20 * 60
+    return (time() - played_at) > timeout
+
   def _get_now_playing(self):
     request = requests.get(self.base_uri, params=self._params())
     request.json()
 
     now_playing = request.json()['recenttracks']['track'][0]
     return {
-      'artist': now_playing['artist']['#text'],
-      'track':  now_playing['name']
+      'artist':     now_playing['artist']['#text'],
+      'track':      now_playing['name'],
+      'played_at':  float(now_playing['date']['uts'])
     }
 
   def _now_playing_formatted(self):
     now_playing = self._get_now_playing()
-    return '%s - %s' % (now_playing['artist'], now_playing['track'],)
+    playing = '%s - %s' % (now_playing['artist'], now_playing['track'],)
+    if self._is_probably_not_still_playing():
+      return ''
+    else:
+      return playing
