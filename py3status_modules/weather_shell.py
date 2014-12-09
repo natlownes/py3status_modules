@@ -12,11 +12,15 @@ class Py3status(object):
   disabled = False
 
   def weather(self, json, i3status_config):
-    full_text = subprocess.check_output(
-      ["bash", "/home/nat/.weather/current.bash"])
+    if self.disabled:
+      return
     response = {
       'cached_until':  time() + 3600,
-      'full_text':     full_text.strip(),
+      'full_text':     self._get_weather(),
       'name':          'weather'
     }
     return (self.index, response)
+
+  def _get_weather(self):
+    return subprocess.check_output(
+      ["bash", "/home/nat/.weather/current.bash"]).strip()

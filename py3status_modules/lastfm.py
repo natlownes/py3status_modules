@@ -14,6 +14,8 @@ class Py3status(object):
   user     = 'crabwhittaker'
 
   def now_playing(self, json, i3status_config):
+    if self.disabled:
+      return
     response = {
       'cached_until':  self._cached_until(),
       'full_text':     self._now_playing_formatted(),
@@ -43,8 +45,8 @@ class Py3status(object):
     if the "currently playing" song was started more than 20 minutes ago,
     assume that we've stopped listening/are listening to Iron Butterfly
     '''
-    now_playing = self._get_now_playing()
-    return now_playing.get('@attr').get('nowplaying')
+    now_playing = self._get_now_playing().get('@attr')
+    return now_playing and now_playing.get('nowplaying')
 
   def _get_now_playing(self):
     request = requests.get(self.base_uri, params=self._params())
