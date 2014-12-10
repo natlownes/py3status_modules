@@ -9,7 +9,7 @@ class Py3status(object):
   information
   '''
   index = 1
-  disabled = False
+  disabled = True
 
   def weather(self, json, i3status_config):
     full_text = ''
