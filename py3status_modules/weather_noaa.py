@@ -11,6 +11,9 @@ def to_celsius(f_str):
 class Py3status(Location):
   '''
   http://forecast.weather.gov/MapClick.php?lat=38.4247341&lon=-86.9624086&FcstType=json
+  icons = ['☀', '☁', '☂', '☃']
+  current observations reference:
+    - http://w1.weather.gov/xml/current_obs/weather.php
   '''
   index    = 1
   disabled = False
