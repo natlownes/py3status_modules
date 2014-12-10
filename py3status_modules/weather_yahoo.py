@@ -100,13 +100,13 @@ class Py3status(object):
     """
     This method gets executed by py3status
     """
-    if self.disabled:
-      return
     response = {
-        'cached_until': time() + self.cache_timeout,
-        'full_text': '',
-        'name': 'weather_yahoo'
-        }
+      'cached_until': time() + self.cache_timeout,
+      'full_text': '',
+      'name': 'weather_yahoo'
+    }
+    if self.disabled:
+      return response
 
     forecasts = self._get_forecast()
     for forecast in forecasts:
