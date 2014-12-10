@@ -1,4 +1,4 @@
-import time
+from time import time
 import requests
 from location import Location
 
