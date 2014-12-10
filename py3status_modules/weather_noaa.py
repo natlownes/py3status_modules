@@ -32,7 +32,7 @@ class Py3status(Location):
 
   def _formatted(self):
     weather = self._get()
-    output = '%s: %s°F (%s°C), wind @ %sMPH' % (
+    output = u"%s: %s°F (%s°C), wind @ %sMPH" % (
       weather['zipcode'],
       float(weather['Temp']),
       to_celsius(weather['Temp']),
