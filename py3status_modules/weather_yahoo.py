@@ -106,7 +106,7 @@ class Py3status(object):
       'name': 'weather_yahoo'
     }
     if self.disabled:
-      return response
+      return (self.index, response)
 
     forecasts = self._get_forecast()
     for forecast in forecasts:

@@ -19,11 +19,12 @@ class Py3status(Location):
     full_text = ''
     if not self.disabled:
       full_text = self._formatted()
-    return {
+    response = {
       'cached_until':  self._cached_until(),
       'full_text':     full_text,
       'name':          'weather_noaa'
     }
+    return (self.index, response,)
 
   def _cached_until(self):
     return time() + 60 * 30
