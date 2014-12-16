@@ -19,5 +19,5 @@ class Location(object):
     return {
       'latitude':   latitude,
       'longitude':  longitude,
-      'zipcode':    response['postal']
+      'zipcode':    response.get('postal', '')
     }
