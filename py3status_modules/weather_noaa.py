@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from time import time
+import os
 import requests
+from time import time
 from location import Location
 
 
@@ -60,6 +61,9 @@ class Py3status(Location):
       'name':          'weather_noaa'
     }
     return (self.index, response,)
+
+  def on_click(self, i3status_output_json, i3status_config, event):
+    os.system("killall -USR1 py3status")
 
   def _cached_until(self):
     return time() + 60 * 30
