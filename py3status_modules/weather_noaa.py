@@ -71,8 +71,12 @@ class Py3status(Location):
   def _formatted(self):
     weather = self._get()
     wind_direction = azimuth_to_cardinal(weather['Windd'])
-    output = u"%s: %s°F (%s°C), ☴%s@%sMPH" % (
-      weather['zipcode'],
+    zip_code = ''
+    if weather['zipcode']:
+      zip_code = '%s:' % (weather['zipcode'],)
+
+    output = u"%s %s°F (%s°C), ☴%s@%sMPH" % (
+      zip_code,
       float(weather['Temp']),
       to_celsius(weather['Temp']),
       wind_direction,
