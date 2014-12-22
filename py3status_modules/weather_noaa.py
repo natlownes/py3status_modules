@@ -33,8 +33,8 @@ def azimuth_to_cardinal(azimuth):
     'NW':   315.0,
     'NNW':  337.5,
   }
-  if azimuth == 360:
-    return 'N'
+  if azimuth > 360:
+    return 'VRBL'
   for k, v in cardinals.iteritems():
     if azimuth >= v and azimuth <= v + diff:
       return k
