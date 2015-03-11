@@ -18,14 +18,11 @@ bar {
 }
 ```
 
-py3_modules will go in this directory:
+the py3status_modules directory should be copied to or symlinked to:
 
 ```
-~/.i3/py3status
+~/.i3/py3status/py3status_modules
 ```
-
-this means that the actual python files go in that directory.  I symlink the
-`py3status_modules` directory to `~/.i3/py3status`
 
 ### Example output
 
@@ -33,10 +30,23 @@ in the i3bar, clicking the text of any of these modules will refresh the output
 
 ##### Weather
 
-Your current zipcode will be detected from your IP address, as will your
-latitude and longitude, which will be used in the request to the NOAA.  Results
-may vary.  Temperatures, wind direction and wind speed will be displayed.
-Depends on the `location.py` file and the `requests` library.
+Displays weather for your current location.
+
+Your current location can be detected from your IP address, which may or may not be
+accurate enough.  You can manually set your latitude, longitude, and zipcode in
+a `~/.location.json` file:
+
+```
+{
+  "latitude":   39.9491605,
+  "longitude":  -75.1658003,
+  "zipcode":    "19102"
+}
+```
+
+these parameters will be used in the request to the NOAA.  Temperatures, wind
+direction and wind speed will be displayed.  Depends on the `location.py` file
+and the `requests` library.
 
 ```
 19125: 36.0°F (2.2°C), ☴WNW@7MPH
